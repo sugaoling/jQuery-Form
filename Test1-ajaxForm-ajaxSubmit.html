@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>核心方法：ajaxForm()和ajaxSubmit()</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //第一种方式ajaxForm()
+            /*$("#myForm").ajaxForm(function () {
+                $('#output1').html("提交成功，欢迎下次再来！").show();
+            });*/
+            //第二种方式ajaxSubmit()
+            $("#myForm").submit(function () {
+                $(this).ajaxSubmit(function () {
+                    $("#output1").html("提交成功，欢迎下次再来！").show();
+                });
+                return false;//组织表单提交
+            })
+        })
+    </script>
+</head>
+<body>
+    <form id="myForm" action="demo.jsp" method="post">
+        名称:<input type="text" name="name"/><br/>
+        地址:<input type="text" name="address"><br/>
+        自我介绍:<textarea name="comment"></textarea><br/>
+        <input type="submit" id="test" value="提交"><br/>
+        <div id="output1" style="display: none"></div>
+    </form>
+</body>
+</html>
